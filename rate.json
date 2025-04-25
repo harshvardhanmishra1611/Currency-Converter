@@ -1,8 +1,7 @@
-// 👇 Load your EUR-based exchange data (paste your JSON here or load from a separate .js file)
-const exchangeData = {
-    date: "2025-04-25",
-    eur: {
-      "1inch": 5.92502426,
+{
+	"date": "2025-04-25",
+	"eur": {
+		"1inch": 5.92502426,
 		"aave": 0.0067859818,
 		"ada": 1.52437087,
 		"aed": 4.16648757,
@@ -341,66 +340,5 @@ const exchangeData = {
 		"zwd": 410.57912957,
 		"zwg": 30.87014458,
 		"zwl": 77135.97732378
-    }
-  };
-  
-  const dropdowns = document.querySelectorAll("select");
-  const btn = document.querySelector("button");
-  const fromCurrency = document.querySelector(".from select");
-  const toCurrency = document.querySelector(".to select");
-  const amountInput = document.querySelector(".amount input");
-  const msg = document.querySelector(".msg");
-  
-  window.addEventListener("DOMContentLoaded", () => {
-    for (let select of dropdowns) {
-      for (let currency in exchangeData.eur) {
-        let option = document.createElement("option");
-        option.value = currency.toUpperCase();
-        option.textContent = currency.toUpperCase();
-        if (select.name === "from" && currency.toUpperCase() === "USD") option.selected = true;
-        if (select.name === "to" && currency.toUpperCase() === "INR") option.selected = true;
-        select.append(option);
-      }
-  
-      select.addEventListener("change", (e) => {
-        updateFlag(e.target);
-      });
-    }
-  
-    updateExchangeRate(); // Run on load
-  });
-  
-  function updateFlag(element) {
-    let currency = element.value;
-    let countryCode = countryList[currency];
-    let img = element.parentElement.querySelector("img");
-    img.src = `https://flagsapi.com/${countryCode}/shiny/64.png`;
-  }
-  
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    updateExchangeRate();
-  });
-  
-  function updateExchangeRate() {
-    let amountVal = parseFloat(amountInput.value) || 1;
-    amountInput.value = amountVal;
-  
-    const from = fromCurrency.value.toLowerCase();
-    const to = toCurrency.value.toLowerCase();
-  
-    const eurRates = exchangeData.eur;
-  
-    if (!(from in eurRates) || !(to in eurRates)) {
-      msg.innerText = "❌ Currency not supported.";
-      return;
-    }
-  
-    // Convert: EUR -> FROM, EUR -> TO → FROM -> TO = to / from
-    const fromRate = eurRates[from];
-    const toRate = eurRates[to];
-    const convertedAmount = ((toRate / fromRate) * amountVal).toFixed(2);
-  
-    msg.innerText = `${amountVal} ${from.toUpperCase()} = ${convertedAmount} ${to.toUpperCase()}`;
-  }
-  
+	}
+}

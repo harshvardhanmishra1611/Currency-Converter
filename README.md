@@ -19,10 +19,6 @@ This is a simple, responsive **Currency Converter** web application built with H
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- [Font Awesome](https://fontawesome.com/) for icons
-- Flags API: `https://flagsapi.com/`
-- Currency API: `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/`
-
 ---
 
 ## 📁 Project Structure
